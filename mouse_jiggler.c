@@ -83,7 +83,7 @@ static void mouse_jiggler_render_callback(Canvas* canvas, void* ctx) {
                 canvas_draw_str(canvas, 0, 35, mode_str);
         }
 
-    canvas_draw_str(canvas, 0, 63, "Hold [back] to exit");
+    canvas_draw_str(canvas, 0, 63, "Press [Back] to exit");
 }
 
 static void mouse_jiggler_input_callback(InputEvent* input_event, void* ctx) {
@@ -254,7 +254,7 @@ int32_t mouse_jiggler_app(void* p) {
     while(1) {
         FuriStatus event_status = furi_message_queue_get(event_queue, &event, usb_switch_success ? FuriWaitForever : 100);
         
-        if(event_status == FuriStatusOk && event.type == InputTypeLong && event.key == InputKeyBack) {
+        if(event_status == FuriStatusOk && event.type == InputTypeShort && event.key == InputKeyBack) {
             break;
         }
 
